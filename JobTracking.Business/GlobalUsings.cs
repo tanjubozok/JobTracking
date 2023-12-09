@@ -1,0 +1,17 @@
+﻿global using AutoMapper;
+global using FluentValidation;
+global using JobTracking.Business.Manager;
+global using JobTracking.Business.Mappings;
+global using JobTracking.Business.Services;
+global using JobTracking.Business.ValidationRules;
+global using JobTracking.Common.Abstract;
+global using JobTracking.Common.ComplexTypes;
+global using JobTracking.Common.Results;
+global using JobTracking.Data.Abstract;
+global using JobTracking.Data.Context;
+global using JobTracking.Data.UnitOfWorks;
+global using JobTracking.Dtos.CategoryDtos;
+global using JobTracking.Entities.Models;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;

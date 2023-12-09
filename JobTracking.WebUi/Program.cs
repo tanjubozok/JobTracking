@@ -1,13 +1,10 @@
+using JobTracking.Business.DependencyResolvers;
 using JobTracking.Data.Context;
 using JobTracking.Entities.Models;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<DatabaseContext>(opt =>
-{
-    opt.UseNpgsql(builder.Configuration.GetConnectionString("LocalPostgreSql"));
-});
+builder.Services.AddDependencies(builder.Configuration);
 
 builder.Services.AddIdentity<AppUser, AppRole>()
     .AddEntityFrameworkStores<DatabaseContext>();

@@ -4,7 +4,7 @@ public enum ResponseType
 {
     Success = 1,
     Error,
-    ValidationError,
+    SaveError,
     NotFound,
     TryCatch
 }

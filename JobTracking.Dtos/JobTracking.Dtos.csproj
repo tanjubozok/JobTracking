@@ -10,4 +10,10 @@
     <ProjectReference Include="..\JobTracking.Entities\JobTracking.Entities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="AppReportDtos\" />
+    <Folder Include="AppNotificaitonDtos\" />
+    <Folder Include="AppJobDtos\" />
+  </ItemGroup>
+
 </Project>

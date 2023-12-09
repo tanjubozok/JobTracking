@@ -2,4 +2,5 @@
 
 public class AppNotification : IBaseEntity
 {
+    public int Id { get; set; }
 }

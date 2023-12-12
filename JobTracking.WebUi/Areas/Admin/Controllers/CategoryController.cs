@@ -1,7 +1,4 @@
-﻿using JobTracking.Business.Services;
-using JobTracking.Common.ComplexTypes;
-
-namespace JobTracking.WebUi.Areas.Admin.Controllers;
+﻿namespace JobTracking.WebUi.Areas.Admin.Controllers;
 
 [Area("Admin")]
 public class CategoryController : Controller

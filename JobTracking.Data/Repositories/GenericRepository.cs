@@ -1,14 +1,9 @@
 ﻿namespace JobTracking.Data.Repositories;
 
-public class GenericRepository<T> : IGenericRepository<T>
+public class GenericRepository<T>(DatabaseContext context) : IGenericRepository<T>
     where T : class, IBaseEntity, new()
 {
-    protected readonly DatabaseContext _context;
-
-    public GenericRepository(DatabaseContext context)
-    {
-        _context = context;
-    }
+    protected readonly DatabaseContext _context = context;
 
     public async Task<T> AddAsync(T entity)
     {

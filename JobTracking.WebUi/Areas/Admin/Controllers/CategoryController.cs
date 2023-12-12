@@ -1,14 +1,9 @@
 ﻿namespace JobTracking.WebUi.Areas.Admin.Controllers;
 
 [Area("Admin")]
-public class CategoryController : Controller
+public class CategoryController(ICategoryService categoryService) : Controller
 {
-    private readonly ICategoryService _categoryService;
-
-    public CategoryController(ICategoryService categoryService)
-    {
-        _categoryService = categoryService;
-    }
+    private readonly ICategoryService _categoryService = categoryService;
 
     public async Task<IActionResult> List()
     {

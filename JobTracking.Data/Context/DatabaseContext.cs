@@ -1,12 +1,8 @@
 ﻿namespace JobTracking.Data.Context;
 
-public class DatabaseContext : IdentityDbContext<AppUser, AppRole, int>
+public class DatabaseContext(DbContextOptions<DatabaseContext> options)
+    : IdentityDbContext<AppUser, AppRole, int>(options)
 {
-    public DatabaseContext(DbContextOptions<DatabaseContext> options)
-        : base(options)
-    {
-    }
-
     protected override void OnModelCreating(ModelBuilder builder)
     {
         #region configurations

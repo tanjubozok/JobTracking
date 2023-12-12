@@ -1,9 +1,6 @@
 ﻿namespace JobTracking.Data.Repositories;
 
-public class AppJobRepository : GenericRepository<AppJob>, IAppJobRepository
+public class AppJobRepository(DatabaseContext context)
+    : GenericRepository<AppJob>(context), IAppJobRepository
 {
-    public AppJobRepository(DatabaseContext context)
-        : base(context)
-    {
-    }
 }

@@ -1,15 +1,9 @@
 ﻿namespace JobTracking.Business.Manager;
 
-public class CategoryManager : ICategoryService
+public class CategoryManager(IUnitOfWork unitOfWork, IMapper mapper) : ICategoryService
 {
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly IMapper _mapper;
-
-    public CategoryManager(IUnitOfWork unitOfWork, IMapper mapper)
-    {
-        _unitOfWork = unitOfWork;
-        _mapper = mapper;
-    }
+    private readonly IUnitOfWork _unitOfWork = unitOfWork;
+    private readonly IMapper _mapper = mapper;
 
     public async Task<IGenericResponse<CategoryAddDto>> CategoryAddAsync(CategoryAddDto dto)
     {

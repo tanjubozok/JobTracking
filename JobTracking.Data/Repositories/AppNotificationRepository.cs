@@ -1,10 +1,6 @@
 ﻿namespace JobTracking.Data.Repositories;
 
-public class AppNotificationRepository
-    : GenericRepository<AppNotification>, IAppNotificationRepository
+public class AppNotificationRepository(DatabaseContext context)
+        : GenericRepository<AppNotification>(context), IAppNotificationRepository
 {
-    public AppNotificationRepository(DatabaseContext context)
-        : base(context)
-    {
-    }
 }

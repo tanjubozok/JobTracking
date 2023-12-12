@@ -1,10 +1,6 @@
 ﻿namespace JobTracking.Data.Repositories;
 
-public class CategoryRepository
-    : GenericRepository<Category>, ICategoryRepository
+public class CategoryRepository(DatabaseContext context) 
+    : GenericRepository<Category>(context), ICategoryRepository
 {
-    public CategoryRepository(DatabaseContext context)
-        : base(context)
-    {
-    }
 }

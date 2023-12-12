@@ -1,14 +1,8 @@
 ﻿namespace JobTracking.Data.UnitOfWorks;
 
-public class UnitOfWork : IUnitOfWork
+public class UnitOfWork(DatabaseContext context) : IUnitOfWork
 {
-    private readonly DatabaseContext _context;
-
-    public UnitOfWork(DatabaseContext context)
-    {
-        _context = context;
-    }
-
+    private readonly DatabaseContext _context = context;
     private AppJobRepository _appJobRepository;
     private AppNotificationRepository _appNotification;
     private AppReportRepository _appReport;

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace JobTracking.WebUi.Controllers;
+﻿namespace JobTracking.WebUi.Controllers;
 
 public class HomeController : Controller
 {

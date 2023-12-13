@@ -1,1 +1,1 @@
-﻿
+﻿global using JobTracking.Dtos.Abstract;

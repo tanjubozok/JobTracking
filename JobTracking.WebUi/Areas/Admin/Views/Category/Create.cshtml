@@ -1,0 +1,114 @@
+﻿@model CategoryAddDto
+@{
+    ViewBag.Title = "Kategori Ekle";
+}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@ViewBag.Title</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item">
+                        <a asp-area="Admin" asp-controller="Home" asp-action="Index">
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        @ViewBag.Title
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <form asp-area="Admin" asp-controller="Category" asp-action="Create" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="Name">Kategori Adı</label>
+                                <input asp-for="Name" class="form-control" placeholder="kategori adı">
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Kategori Rengi</label>
+                                <div class="custom-control custom-radio mb-1">
+                                    <input class="custom-control-input" type="radio" id="warning" name="Color">
+                                    <label for="warning" class="custom-control-label">
+                                        <span class="badge badge-warning" style="font-size:100%;">
+                                            Sarı
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="custom-control custom-radio mb-1">
+                                    <input class="custom-control-input" type="radio" id="primary" name="Color" checked="">
+                                    <label for="primary" class="custom-control-label">
+                                        <span class="badge badge-primary" style="font-size:100%;">
+                                            Mavi
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="custom-control custom-radio mb-1">
+                                    <input class="custom-control-input" type="radio" id="secondary" name="Color">
+                                    <label for="secondary" class="custom-control-label">
+                                        <span class="badge badge-secondary" style="font-size:100%;">
+                                            Gri
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="custom-control custom-radio mb-1">
+                                    <input class="custom-control-input" type="radio" id="success" name="Color">
+                                    <label for="success" class="custom-control-label">
+                                        <span class="badge badge-success" style="font-size:100%;">
+                                            Yeşil
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="custom-control custom-radio mb-1">
+                                    <input class="custom-control-input" type="radio" id="info" name="Color">
+                                    <label for="info" class="custom-control-label">
+                                        <span class="badge badge-info" style="font-size:100%;">
+                                            Açık Mavi
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="custom-control custom-radio mb-1">
+                                    <input class="custom-control-input" type="radio" id="danger" name="Color">
+                                    <label for="danger" class="custom-control-label">
+                                        <span class="badge badge-danger" style="font-size:100%;">
+                                            Kırmızı
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="custom-control custom-radio mb-1">
+                                    <input class="custom-control-input" type="radio" id="dark" name="Color">
+                                    <label for="dark" class="custom-control-label">
+                                        <span class="badge badge-dark" style="font-size:100%;">
+                                            Siyah
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a asp-area="Admin" asp-controller="Category" asp-action="List" class="btn btn-secondary">
+                                <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+                                Listeye Geri Dön
+                            </a>
+                            <button type="submit" class="btn btn-success">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                Ekle
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

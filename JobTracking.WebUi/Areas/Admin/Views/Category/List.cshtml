@@ -1,5 +1,76 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<CategoryListDto>
 @{
+    ViewBag.Title = "Kategori Listesi";
 }
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@ViewBag.Title</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item">
+                        <a asp-area="Admin" asp-controller="Home" asp-action="Index">
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        @ViewBag.Title
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <a asp-area="Admin" asp-controller="Category" asp-action="Create" class="btn btn-primary mb-2">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    Ekle
+                </a>
+                <div class="card">
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="col-md-1 text-center">#Id</th>
+                                        <th class="col-md-9">Kategori Adı</th>
+                                        <th class="text-center">İşlem</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="text-center">@item.Id</td>
+                                            <td>
+                                                <div class="badge bg-@item.Color" style="font-size:100%;">
+                                                    @item.Name
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <a asp-area="Admin" asp-controller="Category" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">
+                                                    <i class="fa fa-edit" aria-hidden="true"></i>
+                                                </a>
+                                                <a asp-area="Admin" asp-controller="Category" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-info">
+                                                    <i class="fa fa-info" aria-hidden="true"></i>
+                                                </a>
+                                                <a asp-area="Admin" asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

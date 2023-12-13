@@ -10,12 +10,10 @@ public static class DependencyExtension
         });
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
-
         services.AddScoped<ICategoryService, CategoryManager>();
 
         services.AddTransient<IValidator<CategoryAddDto>, CategoryAddDtoValidator>();
         services.AddTransient<IValidator<CategoryUpdateDto>, CategoryUpdateDtoValidator>();
-
 
         #region AutoMapper
 

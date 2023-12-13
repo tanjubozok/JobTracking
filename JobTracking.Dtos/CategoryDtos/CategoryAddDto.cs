@@ -1,6 +1,4 @@
-﻿using JobTracking.Dtos.Abstract;
-
-namespace JobTracking.Dtos.CategoryDtos;
+﻿namespace JobTracking.Dtos.CategoryDtos;
 
 public class CategoryAddDto : IBaseDto
 {

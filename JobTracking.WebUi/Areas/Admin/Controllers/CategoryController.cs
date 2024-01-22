@@ -4,7 +4,7 @@
 public class CategoryController(ICategoryService categoryService, IToastNotification notify) : Controller
 {
     private readonly ICategoryService _categoryService = categoryService;
-    private readonly IToastNotification _notify;
+    private readonly IToastNotification _notify = notify;
 
     [HttpGet]
     public async Task<IActionResult> List()
@@ -34,7 +34,7 @@ public class CategoryController(ICategoryService categoryService, IToastNotifica
             }
             else
                 _notify.AddAlertToastMessage(result.Message);
-        }        
+        }
         return View(dto);
     }
 }

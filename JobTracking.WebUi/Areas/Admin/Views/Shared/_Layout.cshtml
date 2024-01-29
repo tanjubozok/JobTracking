@@ -137,12 +137,19 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                        <li class="nav-item">
-                            <a href="../widgets.html" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
+                         <li class="nav-item">
+                            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    Widgets
-                                    <span class="right badge badge-danger">New</span>
+                                    Dashboard
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="Admin" asp-controller="Category" asp-action="List" class="nav-link">
+                                <i class="nav-icon fas fa-list"></i>
+                                <p>
+                                    Kategoriler
                                 </p>
                             </a>
                         </li>
@@ -169,5 +176,7 @@
     <script src="~/admin-theme/plugins/jquery/jquery.min.js"></script>
     <script src="~/admin-theme/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="~/admin-theme/dist/js/adminlte.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

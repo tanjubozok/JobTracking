@@ -1,4 +1,5 @@
-﻿global using JobTracking.Business.DependencyResolvers;
+﻿global using FluentValidation.AspNetCore;
+global using JobTracking.Business.DependencyResolvers;
 global using JobTracking.Business.Services;
 global using JobTracking.Common.ComplexTypes;
 global using JobTracking.Data.Context;

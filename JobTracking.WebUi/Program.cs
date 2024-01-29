@@ -2,6 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
     .AddControllersWithViews()
+    .AddFluentValidation()
     .AddNToastNotifyToastr(new ToastrOptions()
     {
         CloseButton = true,
@@ -15,13 +16,11 @@ builder.Services.AddIdentity<AppUser, AppRole>()
 
 
 var app = builder.Build();
-
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
@@ -32,9 +31,7 @@ app.UseNToastNotify();
 app.MapControllerRoute(
     name: "areaRoute",
     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
 app.Run();

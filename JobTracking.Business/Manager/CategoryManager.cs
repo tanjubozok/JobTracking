@@ -5,7 +5,7 @@ public class CategoryManager(IUnitOfWork unitOfWork, IMapper mapper) : ICategory
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly IMapper _mapper = mapper;
 
-    public async Task<IGenericResponse<CategoryAddDto>> CategoryAddAsync(CategoryAddDto dto)
+    public async Task<IResponse<CategoryAddDto>> CategoryAddAsync(CategoryAddDto dto)
     {
         try
         {
@@ -13,17 +13,17 @@ public class CategoryManager(IUnitOfWork unitOfWork, IMapper mapper) : ICategory
             await _unitOfWork.CategoryRepository.AddAsync(getCategory);
             var result = await _unitOfWork.CommitAsync();
             if (result > 0)
-                return new GenericResponse<CategoryAddDto>(ResponseType.Success, dto, $"{dto.Name} eklendi");
+                return new Response<CategoryAddDto>(ResponseType.Success, dto, $"{dto.Name} eklendi");
             else
-                return new GenericResponse<CategoryAddDto>(ResponseType.SaveError, "Kayıt sırasında hata oluştu");
+                return new Response<CategoryAddDto>(ResponseType.SaveError, "Kayıt sırasında hata oluştu");
         }
         catch (Exception ex)
         {
-            return new GenericResponse<CategoryAddDto>(ResponseType.TryCatch, ex.Message);
+            return new Response<CategoryAddDto>(ResponseType.TryCatch, ex.Message);
         }
     }
 
-    public async Task<IGenericResponse<CategoryUpdateDto>> CategoryUpdateDto(CategoryUpdateDto dto)
+    public async Task<IResponse<CategoryUpdateDto>> CategoryUpdateDto(CategoryUpdateDto dto)
     {
         try
         {
@@ -31,30 +31,30 @@ public class CategoryManager(IUnitOfWork unitOfWork, IMapper mapper) : ICategory
             _unitOfWork.CategoryRepository.Update(mapCategory);
             var result = await _unitOfWork.CommitAsync();
             if (result > 0)
-                return new GenericResponse<CategoryUpdateDto>(ResponseType.Success, dto, $"{dto.Name} güncellendi");
+                return new Response<CategoryUpdateDto>(ResponseType.Success, dto, $"{dto.Name} güncellendi");
             else
-                return new GenericResponse<CategoryUpdateDto>(ResponseType.SaveError, "Kayıt sırasında hata oluştu");
+                return new Response<CategoryUpdateDto>(ResponseType.SaveError, "Kayıt sırasında hata oluştu");
         }
         catch (Exception ex)
         {
-            return new GenericResponse<CategoryUpdateDto>(ResponseType.TryCatch, ex.Message);
+            return new Response<CategoryUpdateDto>(ResponseType.TryCatch, ex.Message);
         }
     }
 
-    public async Task<IGenericResponse<List<CategoryListDto>>> GetCategoryListAsync()
+    public async Task<IResponse<List<CategoryListDto>>> GetCategoryListAsync()
     {
         try
         {
             var categoryList = await _unitOfWork.CategoryRepository.GetAllAsync();
             var mapCategory = _mapper.Map<List<CategoryListDto>>(categoryList);
             if (mapCategory is not null)
-                return new GenericResponse<List<CategoryListDto>>(ResponseType.Success, mapCategory);
+                return new Response<List<CategoryListDto>>(ResponseType.Success, mapCategory);
             else
-                return new GenericResponse<List<CategoryListDto>>(ResponseType.NotFound, "Kategori bulunamadı");
+                return new Response<List<CategoryListDto>>(ResponseType.NotFound, "Kategori bulunamadı");
         }
         catch (Exception ex)
         {
-            return new GenericResponse<List<CategoryListDto>>(ResponseType.TryCatch, ex.Message);
+            return new Response<List<CategoryListDto>>(ResponseType.TryCatch, ex.Message);
         }
     }
 }

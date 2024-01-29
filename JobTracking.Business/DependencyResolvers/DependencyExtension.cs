@@ -23,7 +23,7 @@ public static class DependencyExtension
             opt.AddProfiles(profiles);
         });
         var mapper = conf.CreateMapper();
-        services.AddSingleton(mapper); 
+        services.AddSingleton(mapper);
 
         #endregion
     }

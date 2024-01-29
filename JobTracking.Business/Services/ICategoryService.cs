@@ -2,8 +2,7 @@
 
 public interface ICategoryService
 {
-    Task<IGenericResponse<List<CategoryListDto>>> GetCategoryListAsync();
-
-    Task<IGenericResponse<CategoryAddDto>> CategoryAddAsync(CategoryAddDto dto);
-    Task<IGenericResponse<CategoryUpdateDto>> CategoryUpdateDto(CategoryUpdateDto dto);
+    Task<IResponse<List<CategoryListDto>>> GetCategoryListAsync();
+    Task<IResponse<CategoryAddDto>> CategoryAddAsync(CategoryAddDto dto);
+    Task<IResponse<CategoryUpdateDto>> CategoryUpdateDto(CategoryUpdateDto dto);
 }

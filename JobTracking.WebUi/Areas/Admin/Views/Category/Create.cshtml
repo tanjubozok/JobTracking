@@ -2,6 +2,9 @@
 @{
     ViewBag.Title = "Kategori Ekle";
 }
+@section Scripts {
+    <partial name="_ValidationScripts" />
+}
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -27,69 +30,69 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="card card-primary">
+                <div class="card">
                     <form asp-area="Admin" asp-controller="Category" asp-action="Create" method="post">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="card-body">
                             <div class="form-group">
                                 <label asp-for="Name">Kategori Adı</label>
-                                <input asp-for="Name" class="form-control" placeholder="kategori adı">
+                                <input asp-for="Name" class="form-control rounded-0" placeholder="kategori adı">
                                 <span asp-validation-for="Name" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label>Kategori Rengi</label>
-                                <div class="custom-control custom-radio mb-1">
-                                    <input class="custom-control-input" type="radio" id="warning" name="Color">
-                                    <label for="warning" class="custom-control-label">
-                                        <span class="badge badge-warning" style="font-size:100%;">
+                                <div class="custom-control custom-radio">
+                                    <input class="custom-control-input" type="radio" id="warning" name="Color" value="warning">
+                                    <label class="custom-control-label" for="warning">
+                                        <span class="badge badge-warning" style="font-size:80%;">
                                             Sarı
                                         </span>
                                     </label>
                                 </div>
-                                <div class="custom-control custom-radio mb-1">
-                                    <input class="custom-control-input" type="radio" id="primary" name="Color" checked="">
-                                    <label for="primary" class="custom-control-label">
-                                        <span class="badge badge-primary" style="font-size:100%;">
+                                <div class="custom-control custom-radio">
+                                    <input class="custom-control-input" type="radio" id="primary" name="Color" value="primary" checked>
+                                    <label class="custom-control-label" for="primary">
+                                        <span class="badge badge-primary" style="font-size:80%;">
                                             Mavi
                                         </span>
                                     </label>
                                 </div>
-                                <div class="custom-control custom-radio mb-1">
-                                    <input class="custom-control-input" type="radio" id="secondary" name="Color">
-                                    <label for="secondary" class="custom-control-label">
-                                        <span class="badge badge-secondary" style="font-size:100%;">
+                                <div class="custom-control custom-radio">
+                                    <input class="custom-control-input" type="radio" id="secondary" name="Color" value="secondary">
+                                    <label class="custom-control-label" for="secondary">
+                                        <span class="badge badge-secondary" style="font-size:80%;">
                                             Gri
                                         </span>
                                     </label>
                                 </div>
-                                <div class="custom-control custom-radio mb-1">
-                                    <input class="custom-control-input" type="radio" id="success" name="Color">
-                                    <label for="success" class="custom-control-label">
-                                        <span class="badge badge-success" style="font-size:100%;">
+                                <div class="custom-control custom-radio">
+                                    <input class="custom-control-input" type="radio" id="success" name="Color" value="success">
+                                    <label class="custom-control-label" for="success">
+                                        <span class="badge badge-success" style="font-size:80%;">
                                             Yeşil
                                         </span>
                                     </label>
                                 </div>
-                                <div class="custom-control custom-radio mb-1">
-                                    <input class="custom-control-input" type="radio" id="info" name="Color">
-                                    <label for="info" class="custom-control-label">
-                                        <span class="badge badge-info" style="font-size:100%;">
+                                <div class="custom-control custom-radio">
+                                    <input class="custom-control-input" type="radio" id="info" name="Color" value="info">
+                                    <label class="custom-control-label" for="info">
+                                        <span class="badge badge-info" style="font-size:80%;">
                                             Açık Mavi
                                         </span>
                                     </label>
                                 </div>
-                                <div class="custom-control custom-radio mb-1">
-                                    <input class="custom-control-input" type="radio" id="danger" name="Color">
-                                    <label for="danger" class="custom-control-label">
-                                        <span class="badge badge-danger" style="font-size:100%;">
+                                <div class="custom-control custom-radio">
+                                    <input class="custom-control-input" type="radio" id="danger" name="Color" value="danger">
+                                    <label class="custom-control-label" for="danger">
+                                        <span class="badge badge-danger" style="font-size:80%;">
                                             Kırmızı
                                         </span>
                                     </label>
                                 </div>
-                                <div class="custom-control custom-radio mb-1">
-                                    <input class="custom-control-input" type="radio" id="dark" name="Color">
-                                    <label for="dark" class="custom-control-label">
-                                        <span class="badge badge-dark" style="font-size:100%;">
+                                <div class="custom-control custom-radio">
+                                    <input class="custom-control-input" type="radio" id="dark" name="Color" value="dark">
+                                    <label class="custom-control-label" for="dark">
+                                        <span class="badge badge-dark" style="font-size:80%;">
                                             Siyah
                                         </span>
                                     </label>
@@ -97,11 +100,11 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a asp-area="Admin" asp-controller="Category" asp-action="List" class="btn btn-secondary">
+                            <a asp-area="Admin" asp-controller="Category" asp-action="List" class="btn btn-secondary btn-flat">
                                 <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
                                 Listeye Geri Dön
                             </a>
-                            <button type="submit" class="btn btn-success">
+                            <button type="submit" class="btn btn-success btn-flat">
                                 <i class="fa fa-plus" aria-hidden="true"></i>
                                 Ekle
                             </button>

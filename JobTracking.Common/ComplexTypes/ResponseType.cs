@@ -6,5 +6,6 @@ public enum ResponseType
     Error,
     SaveError,
     NotFound,
-    TryCatch
+    TryCatch,
+    SameRecord
 }

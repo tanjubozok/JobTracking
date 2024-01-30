@@ -1,6 +1,6 @@
-﻿@model CategoryAddDto
+﻿@model CategoryUpdateDto
 @{
-    ViewBag.Title = "Kategori Ekle";
+    ViewBag.Title = "Kategori Düzenle";
 }
 @section Scripts {
     <partial name="_ValidationScripts" />
@@ -31,7 +31,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <form asp-area="Admin" asp-controller="Category" asp-action="Create" method="post">
+                    <form asp-area="Admin" asp-controller="Category" asp-action="Edit" method="post">
+                        <input type="hidden" asp-for="Id" />
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="card-body">
                             <div class="form-group">
@@ -42,7 +43,7 @@
                             <div class="form-group">
                                 <label>Kategori Rengi</label>
                                 <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="warning" name="Color" value="warning">
+                                    <input class="custom-control-input" type="radio" id="warning" name="Color" value="warning" asp-for="Color">
                                     <label class="custom-control-label" for="warning">
                                         <span class="badge badge-warning" style="font-size:80%;">
                                             Sarı
@@ -50,7 +51,7 @@
                                     </label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="primary" name="Color" value="primary" checked>
+                                    <input class="custom-control-input" type="radio" id="primary" name="Color" value="primary" checked asp-for="Color">
                                     <label class="custom-control-label" for="primary">
                                         <span class="badge badge-primary" style="font-size:80%;">
                                             Mavi
@@ -58,7 +59,7 @@
                                     </label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="secondary" name="Color" value="secondary">
+                                    <input class="custom-control-input" type="radio" id="secondary" name="Color" value="secondary" asp-for="Color">
                                     <label class="custom-control-label" for="secondary">
                                         <span class="badge badge-secondary" style="font-size:80%;">
                                             Gri
@@ -66,7 +67,7 @@
                                     </label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="success" name="Color" value="success">
+                                    <input class="custom-control-input" type="radio" id="success" name="Color" value="success" asp-for="Color">
                                     <label class="custom-control-label" for="success">
                                         <span class="badge badge-success" style="font-size:80%;">
                                             Yeşil
@@ -74,7 +75,7 @@
                                     </label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="info" name="Color" value="info">
+                                    <input class="custom-control-input" type="radio" id="info" name="Color" value="info" asp-for="Color">
                                     <label class="custom-control-label" for="info">
                                         <span class="badge badge-info" style="font-size:80%;">
                                             Açık Mavi
@@ -82,7 +83,7 @@
                                     </label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="danger" name="Color" value="danger">
+                                    <input class="custom-control-input" type="radio" id="danger" name="Color" value="danger" asp-for="Color">
                                     <label class="custom-control-label" for="danger">
                                         <span class="badge badge-danger" style="font-size:80%;">
                                             Kırmızı
@@ -90,7 +91,7 @@
                                     </label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="dark" name="Color" value="dark">
+                                    <input class="custom-control-input" type="radio" id="dark" name="Color" value="dark" asp-for="Color">
                                     <label class="custom-control-label" for="dark">
                                         <span class="badge badge-dark" style="font-size:80%;">
                                             Siyah
@@ -104,9 +105,9 @@
                                 <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
                                 Listeye Geri Dön
                             </a>
-                            <button type="submit" class="btn btn-primary btn-flat">
-                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                Ekle
+                            <button type="submit" class="btn btn-warning btn-flat">
+                                <i class="fa fa-save" aria-hidden="true"></i>
+                                Güncelle
                             </button>
                         </div>
                     </form>

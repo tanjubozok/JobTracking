@@ -7,7 +7,7 @@ builder.Services
     {
         CloseButton = true,
         ProgressBar = true,
-        PositionClass = ToastPositions.TopRight
+        PositionClass = ToastPositions.TopRight        
     });
 
 builder.Services.AddDependencies(builder.Configuration);

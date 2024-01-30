@@ -9,7 +9,7 @@ public class CategoryController(ICategoryService categoryService, IToastNotifica
     [HttpGet]
     public async Task<IActionResult> List()
     {
-        var result = await _categoryService.GetCategoryListAsync();
+        var result = await _categoryService.CategoryListAsync();
         if (result.ResponseType == ResponseType.Success)
             return View(result.Data);
         return View();
@@ -27,6 +27,31 @@ public class CategoryController(ICategoryService categoryService, IToastNotifica
         if (ModelState.IsValid)
         {
             var result = await _categoryService.CategoryAddAsync(dto);
+            if (result.ResponseType == ResponseType.Success)
+            {
+                _notify.AddSuccessToastMessage(result.Message);
+                return RedirectToAction("List", "Category", new { area = "Admin" });
+            }
+            else
+                _notify.AddAlertToastMessage(result.Message);
+        }
+        return View(dto);
+    }
+
+    public async Task<IActionResult> Edit(int id)
+    {
+        var result = await _categoryService.CategoryGetById(id);
+        if (result.ResponseType == ResponseType.Success)
+            return View(result.Data);
+        return View(result);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Edit(CategoryUpdateDto dto)
+    {
+        if (ModelState.IsValid)
+        {
+            var result = await _categoryService.CategoryUpdateAsync(dto);
             if (result.ResponseType == ResponseType.Success)
             {
                 _notify.AddSuccessToastMessage(result.Message);

@@ -1,34 +1,62 @@
 ﻿namespace JobTracking.Data.Repositories;
 
-public class GenericRepository<T>(DatabaseContext context) : IGenericRepository<T>
+public class GenericRepository<T> : IGenericRepository<T>
     where T : class, IBaseEntity, new()
 {
-    protected readonly DatabaseContext _context = context;
+    protected readonly DatabaseContext _context;
+
+    public GenericRepository(DatabaseContext context)
+    {
+        _context = context ?? throw new ArgumentNullException(nameof(context));
+    }
 
     public async Task<T> AddAsync(T entity)
     {
+        if (entity == null)
+            throw new ArgumentNullException(nameof(entity));
+
         await _context.Set<T>().AddAsync(entity);
         return entity;
     }
 
-    public async Task<bool> AnyAsync()
-        => await _context.Set<T>().AnyAsync();
+    private IQueryable<T> ApplyPredicate(IQueryable<T> query, Expression<Func<T, bool>> predicate)
+        => predicate != null ? query.Where(predicate) : query;
 
-    public async Task<int> CountAsync()
-        => await _context.Set<T>().CountAsync();
+    public async Task<bool> AnyAsync(Expression<Func<T, bool>>? predicate = null)
+    {
+        IQueryable<T> query = _context.Set<T>().AsNoTracking();
+        query = ApplyPredicate(query, predicate);
+        return await query.AnyAsync();
+    }
 
-    public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>>? predicate = null)
-        => predicate == null
-        ? await _context.Set<T>().AsNoTracking().ToListAsync()
-        : await _context.Set<T>().Where(predicate).AsNoTracking().ToListAsync();
+    public async Task<int> CountAsync(Expression<Func<T, bool>>? predicate = null)
+    {
+        IQueryable<T> query = _context.Set<T>().AsNoTracking();
+        query = ApplyPredicate(query, predicate);
+        return await query.CountAsync();
+    }
+
+    public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>>? predicate = null, Expression<Func<T, object>>? orderBy = null)
+    {
+        IQueryable<T> query = _context.Set<T>().AsNoTracking();
+        query = ApplyPredicate(query, predicate);
+        if (orderBy != null)
+            query = query.OrderBy(orderBy);
+        return await query.ToListAsync();
+    }
 
     public async Task<T?> GetAsync(Expression<Func<T, bool>>? predicate = null)
-        => predicate == null
-        ? await _context.Set<T>().FirstOrDefaultAsync()
-        : await _context.Set<T>().AsNoTracking().FirstOrDefaultAsync(predicate);
+    {
+        IQueryable<T> query = _context.Set<T>().AsNoTracking();
+        query = ApplyPredicate(query, predicate);
+        return await query.SingleOrDefaultAsync();
+    }
 
     public T Update(T entity)
     {
+        if (entity == null)
+            throw new ArgumentNullException(nameof(entity));
+
         _context.Set<T>().Update(entity);
         return entity;
     }

@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="~/admin-theme/plugins/fontawesome-free/css/fontawesome.min.css" />
     <link rel="stylesheet" href="~/admin-theme/dist/css/adminlte.min.css">
 
+    @await Component.InvokeAsync("NToastNotify")
+
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -137,7 +139,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>

@@ -43,6 +43,7 @@ public class CategoryController(ICategoryService categoryService, IToastNotifica
         var result = await _categoryService.CategoryGetById(id);
         if (result.ResponseType == ResponseType.Success)
             return View(result.Data);
+        _notify.AddAlertToastMessage(result.Message);
         return View(result);
     }
 

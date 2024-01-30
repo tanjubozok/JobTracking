@@ -11,7 +11,7 @@ public class CategoryManager(IUnitOfWork unitOfWork, IMapper mapper) : ICategory
         {
             var category = _mapper.Map<Category>(dto);
 
-            if (await _unitOfWork.CategoryRepository.AnyAsync(x => x.Name.ToLower() == category.Name.ToLower()))
+            if (await _unitOfWork.CategoryRepository.AnyAsync(x => x.Name.Trim().ToLower() == category.Name.Trim().ToLower()))
                 return new Response<CategoryAddDto>(ResponseType.SameRecord, "Aynı kayıt veritabanında mevcuttur");
 
             await _unitOfWork.CategoryRepository.AddAsync(category);
@@ -34,7 +34,7 @@ public class CategoryManager(IUnitOfWork unitOfWork, IMapper mapper) : ICategory
         {
             var category = _mapper.Map<Category>(dto);
 
-            if (await _unitOfWork.CategoryRepository.AnyAsync(x => x.Name.ToLower() == category.Name.ToLower()))
+            if (await _unitOfWork.CategoryRepository.AnyAsync(x => x.Name.Trim().ToLower() == category.Name.Trim().ToLower()))
                 return new Response<CategoryUpdateDto>(ResponseType.SameRecord, "Aynı kayıt veritabanında mevcuttur");
 
             _unitOfWork.CategoryRepository.Update(category);

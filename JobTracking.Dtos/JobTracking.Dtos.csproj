@@ -7,13 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JobTracking.Entities\JobTracking.Entities.csproj" />
+    <Compile Remove="AppJobDtos\**" />
+    <Compile Remove="AppNotificaitonDtos\**" />
+    <Compile Remove="AppReportDtos\**" />
+    <EmbeddedResource Remove="AppJobDtos\**" />
+    <EmbeddedResource Remove="AppNotificaitonDtos\**" />
+    <EmbeddedResource Remove="AppReportDtos\**" />
+    <None Remove="AppJobDtos\**" />
+    <None Remove="AppNotificaitonDtos\**" />
+    <None Remove="AppReportDtos\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AppReportDtos\" />
-    <Folder Include="AppNotificaitonDtos\" />
-    <Folder Include="AppJobDtos\" />
+    <ProjectReference Include="..\JobTracking.Entities\JobTracking.Entities.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,6 +5,7 @@ public interface IGenericRepository<T>
 {
     Task<List<T>> GetAllAsync(Expression<Func<T, bool>>? predicate = null, Expression<Func<T, object>>? orderBy = null);
     Task<T?> GetAsync(Expression<Func<T, bool>>? predicate = null);
+    Task<T?> GetByIdAsync(object id);
 
     Task<int> CountAsync(Expression<Func<T, bool>>? predicate = null);
     Task<bool> AnyAsync(Expression<Func<T, bool>>? predicate = null);

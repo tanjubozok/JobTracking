@@ -55,7 +55,7 @@ public class CategoryManager(IUnitOfWork unitOfWork, IMapper mapper) : ICategory
     {
         try
         {
-            var category = await _unitOfWork.CategoryRepository.GetAsync(x => x.Id == categoryId);
+            var category = await _unitOfWork.CategoryRepository.GetByIdAsync(categoryId);
 
             var result = _mapper.Map<CategoryUpdateDto>(category);
             if (result is not null)

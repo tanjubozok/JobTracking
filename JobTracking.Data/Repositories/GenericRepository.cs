@@ -12,15 +12,9 @@ public class GenericRepository<T> : IGenericRepository<T>
 
     public async Task<T> AddAsync(T entity)
     {
-        if (entity == null)
-            throw new ArgumentNullException(nameof(entity));
-
         await _context.Set<T>().AddAsync(entity);
         return entity;
     }
-
-    private IQueryable<T> ApplyPredicate(IQueryable<T> query, Expression<Func<T, bool>> predicate)
-        => predicate != null ? query.Where(predicate) : query;
 
     public async Task<bool> AnyAsync(Expression<Func<T, bool>>? predicate = null)
     {
@@ -54,10 +48,13 @@ public class GenericRepository<T> : IGenericRepository<T>
 
     public T Update(T entity)
     {
-        if (entity == null)
-            throw new ArgumentNullException(nameof(entity));
-
         _context.Set<T>().Update(entity);
         return entity;
     }
+
+    public async Task<T?> GetByIdAsync(object id)
+        => await _context.Set<T>().FindAsync(id);
+
+    private IQueryable<T> ApplyPredicate(IQueryable<T> query, Expression<Func<T, bool>> predicate)
+       => predicate != null ? query.Where(predicate) : query;
 }
